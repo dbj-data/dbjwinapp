@@ -6,12 +6,24 @@
 #include "dbjwinapp.h"
 
 #include "../dbj-fwk/dbj_fwk.h"
-//
-//#ifndef _WIN64
-//#pragma comment(linker, "/include:_wWinMain@16")
-//#else
-//#pragma comment(linker, "/include:wWinMain")
-//#endif
+
+/// DBJ Simplelog init 
+/// default setup is log to file, MT resilient, no console
+/// only host app can do this and only once
+#include "dbj--simplelog/dbj_simple_log_host.h"
+
+struct simple_log_protector final {
+
+	simple_log_protector() noexcept {
+		dbj_simple_log_startup(__argv[0] );
+	}
+
+	~simple_log_protector() noexcept {
+		_ASSERTE(dbj_log_finalize() == EXIT_SUCCESS);
+	}
+};
+
+static const simple_log_protector protector_;
 
 #define MAX_LOADSTRING 100
 
