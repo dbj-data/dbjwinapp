@@ -157,7 +157,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="program.cpp" />
+    <ClCompile Include="program.c" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="dbjwinapp.rc" />
