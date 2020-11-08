@@ -1,5 +1,5 @@
-// the entry point for the application
-// using DBJ-FWK
+// the entry point for the win gui application
+// using DBJ+FWK
 //
 
 #include "framework.h"
@@ -19,10 +19,12 @@
 
 #include "dbj--simplelog/dbj_simple_log_host.h"
 
+#ifdef __cplusplus
 ///  this is simple cpp solution
 struct simple_log_protector final {
 
 	simple_log_protector() noexcept {
+
 #ifdef _DEBUG
     _ASSERT( EXIT_SUCCESS == dbj_simple_log_startup(this_app_full_path_a()));
 #else
@@ -40,6 +42,8 @@ struct simple_log_protector final {
 };
 
 static const simple_log_protector protector_;
+
+#endif // __cplusplus
 /// --------------------------------------------------------------
 
 #define MAX_LOADSTRING 100
