@@ -5,32 +5,28 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dbjwinapp", "dbjwinapp.vcxproj", "{5A9E572A-88C4-4A06-AF78-A3CDF0139ECA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dbj-fwk-lib", "..\dbj-fwk\dbj-fwk-lib\dbj-fwk-lib.vcxproj", "{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dbj-fwk-lib", "dbj-fwk\dbj-fwk-lib\dbj-fwk-lib.vcxproj", "{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dbj_simplelog", "dbj--simplelog\lib\dbj_simplelog.vcxproj", "{6399ECB3-1781-430C-8628-561A3E379FD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5A9E572A-88C4-4A06-AF78-A3CDF0139ECA}.Debug|x64.ActiveCfg = Debug|x64
 		{5A9E572A-88C4-4A06-AF78-A3CDF0139ECA}.Debug|x64.Build.0 = Debug|x64
-		{5A9E572A-88C4-4A06-AF78-A3CDF0139ECA}.Debug|x86.ActiveCfg = Debug|Win32
-		{5A9E572A-88C4-4A06-AF78-A3CDF0139ECA}.Debug|x86.Build.0 = Debug|Win32
 		{5A9E572A-88C4-4A06-AF78-A3CDF0139ECA}.Release|x64.ActiveCfg = Release|x64
 		{5A9E572A-88C4-4A06-AF78-A3CDF0139ECA}.Release|x64.Build.0 = Release|x64
-		{5A9E572A-88C4-4A06-AF78-A3CDF0139ECA}.Release|x86.ActiveCfg = Release|Win32
-		{5A9E572A-88C4-4A06-AF78-A3CDF0139ECA}.Release|x86.Build.0 = Release|Win32
 		{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}.Debug|x64.ActiveCfg = Debug|x64
 		{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}.Debug|x64.Build.0 = Debug|x64
-		{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}.Debug|x86.ActiveCfg = Debug|Win32
-		{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}.Debug|x86.Build.0 = Debug|Win32
 		{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}.Release|x64.ActiveCfg = Release|x64
 		{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}.Release|x64.Build.0 = Release|x64
-		{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}.Release|x86.ActiveCfg = Release|Win32
-		{E2EA48AE-16F3-4612-9C0D-DF2C2D996DEB}.Release|x86.Build.0 = Release|Win32
+		{6399ECB3-1781-430C-8628-561A3E379FD6}.Debug|x64.ActiveCfg = Debug|x64
+		{6399ECB3-1781-430C-8628-561A3E379FD6}.Debug|x64.Build.0 = Debug|x64
+		{6399ECB3-1781-430C-8628-561A3E379FD6}.Release|x64.ActiveCfg = Release|x64
+		{6399ECB3-1781-430C-8628-561A3E379FD6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

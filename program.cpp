@@ -5,25 +5,37 @@
 #include "framework.h"
 #include "dbjwinapp.h"
 
-#include "../dbj-fwk/dbj_fwk.h"
+#include "dbj-fwk/dbj_fwk.h" // linker commands for winmain versions
+#include "dbj-fwk/win/windows_includer.h" // this_app_full_path_a
 
 /// DBJ Simplelog init 
 /// default setup is log to file, MT resilient, no console
-/// only host app can do this and only once
+/// only host app has to do this and only once
+/// log file path is: full path of app exe + '.log'
 #include "dbj--simplelog/dbj_simple_log_host.h"
 
+///  this is simple cpp solution
 struct simple_log_protector final {
 
 	simple_log_protector() noexcept {
-		dbj_simple_log_startup(__argv[0] );
+#ifdef _DEBUG
+    _ASSERT( EXIT_SUCCESS == dbj_simple_log_startup(this_app_full_path_a()));
+#else
+    dbj_simple_log_startup(this_app_full_path_a());
+#endif
 	}
 
 	~simple_log_protector() noexcept {
-		_ASSERTE(dbj_log_finalize() == EXIT_SUCCESS);
+#ifdef _DEBUG
+        _ASSERT(EXIT_SUCCESS == dbj_log_finalize());
+#else
+        dbj_log_finalize();
+#endif
 	}
 };
 
 static const simple_log_protector protector_;
+/// --------------------------------------------------------------
 
 #define MAX_LOADSTRING 100
 
