@@ -12,6 +12,11 @@
 /// default setup is log to file, MT resilient, no console
 /// only host app has to do this and only once
 /// log file path is: full path of app exe + '.log'
+
+#if _DEBUG
+#define DBJ_LOG_TESTING
+#endif
+
 #include "dbj--simplelog/dbj_simple_log_host.h"
 
 ///  this is simple cpp solution
