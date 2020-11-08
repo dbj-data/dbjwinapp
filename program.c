@@ -19,31 +19,6 @@
 
 #include "dbj--simplelog/dbj_simple_log_host.h"
 
-#ifdef __cplusplus
-///  this is simple cpp solution
-struct simple_log_protector final {
-
-	simple_log_protector() noexcept {
-
-#ifdef _DEBUG
-    _ASSERT( EXIT_SUCCESS == dbj_simple_log_startup(this_app_full_path_a()));
-#else
-    dbj_simple_log_startup(this_app_full_path_a());
-#endif
-	}
-
-	~simple_log_protector() noexcept {
-#ifdef _DEBUG
-        _ASSERT(EXIT_SUCCESS == dbj_log_finalize());
-#else
-        dbj_log_finalize();
-#endif
-	}
-};
-
-static const simple_log_protector protector_;
-
-#endif // __cplusplus
 /// --------------------------------------------------------------
 
 #define MAX_LOADSTRING 100
@@ -63,7 +38,10 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define HINST_THISCOMPONENT ((HINSTANCE)&__ImageBase)
 
-extern "C" int program (int argc, char ** argv) 
+#ifdef __cplusplus
+extern "C" 
+#endif
+int program (int argc, char ** argv) 
 {
     // CAUTION! not good for calling from DLL's
     HINSTANCE hInstance = HINST_THISCOMPONENT ;
@@ -85,7 +63,7 @@ extern "C" int program (int argc, char ** argv)
     MSG msg;
 
     // Main message loop:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    while (GetMessage(&msg, NULL, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
@@ -96,9 +74,6 @@ extern "C" int program (int argc, char ** argv)
 
     return (int) msg.wParam;
 }
-
-
-
 //
 //  FUNCTION: MyRegisterClass()
 //
@@ -116,7 +91,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_DBJWINAPP));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hCursor        = LoadCursor(NULL, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_DBJWINAPP);
     wcex.lpszClassName  = szWindowClass;
@@ -140,7 +115,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; // Store instance handle in our global variable
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
 
    if (!hWnd)
    {
@@ -189,6 +164,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Add any drawing code that uses hdc here...
+            (void)hdc;
             EndPaint(hWnd, &ps);
         }
         break;
