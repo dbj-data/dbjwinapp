@@ -8,16 +8,16 @@
 #include "dbj-fwk/dbj_fwk.h" // linker commands for winmain versions
 #include "dbj-fwk/win/windows_includer.h" // this_app_full_path_a
 
-/// DBJ Simplelog init 
-/// default setup is log to file, MT resilient, no console
-/// only host app has to do this and only once
-/// log file path is: full path of app exe + '.log'
-
-#if _DEBUG
-#define DBJ_LOG_TESTING
-#endif
-
+// the mandatory and only initialization of the dbj simplelog
+// make sure you understand the very simple readme
+// inside dbj--simplelog 
 #include "dbj--simplelog/dbj_simple_log_host.h"
+
+#ifdef _DEBUG
+int dbj_simple_log_setup_ = (DBJ_LOG_TO_FILE | DBJ_LOG_MT | DBJ_LOG_NO_CONSOLE | DBJ_LOG_TESTING);
+#else // ! _DEBUG
+int dbj_simple_log_setup_ = (DBJ_LOG_DEFAULT_SETUP);
+#endif // _DEBUG
 
 /// --------------------------------------------------------------
 
