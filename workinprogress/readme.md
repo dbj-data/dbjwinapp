@@ -1,0 +1,1 @@
+Just a bit more than trivial WIN32 desktop GUI App

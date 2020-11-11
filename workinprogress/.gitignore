@@ -1,0 +1,8 @@
+*.obj
+*.exe
+*.ilk
+*.pdb
+*.filters
+*.user
+x64
+.vs
