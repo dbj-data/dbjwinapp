@@ -49,6 +49,7 @@ static struct
 
 #if 0
 // https://stackoverflow.com/a/6724559/10870835
+// EnumChildWindows(hwndParent, set_child_font_, (LPARAM)hFont);
 BOOL CALLBACK set_child_font_(HWND hwndChild, LPARAM lParam)
 {
 	HFONT hFont = (HFONT)lParam;
@@ -56,25 +57,6 @@ BOOL CALLBACK set_child_font_(HWND hwndChild, LPARAM lParam)
 	return TRUE ;
 }
 
-void DoSelectFont(HWND hwnd)
-{
-	CHOOSEFONT cf = {sizeof(CHOOSEFONT)};
-	LOGFONT lf;
-	GetObject(GLOBAL.font_, sizeof(LOGFONT), &lf);
-
-	cf.Flags = CF_EFFECTS | CF_INITTOLOGFONTSTRUCT | CF_SCREENFONTS;
-	cf.hwndOwner = hwnd;
-	cf.lpLogFont = &lf;
-	cf.rgbColors = GLOBAL.text_colour_;
-
-	ChooseFont(&cf);
-	HFONT hf;
-	if ((hf = CreateFontIndirect(&lf)))
-	{
-		GLOBAL.font_ = hf;
-	}
-	GLOBAL.text_colour_ = cf.rgbColors;
-}
 #endif // 0
 
 static void show_this_window_client_size_(HDC hdc, RECT *rect_ptr_, HFONT hf)
